@@ -1,6 +1,29 @@
 import React from "react";
 
+interface Question {
+  answer: string;
+}
+async function askQuestion(question: string): Promise<Question> {
+  const response = await fetch("/api/questions", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ question }),
+  });
+  if (response.ok) {
+    return response.json();
+  } else {
+    throw new Error("Something went wrong");
+  }
+}
+
 export function App() {
+  const questionRef = React.useRef(null);
+  function submitQuestion() {
+    const question = questionRef.current.value;
+    askQuestion(question).then(console.log);
+  }
   return (
     <>
       <h1>Ask my book</h1>
@@ -10,6 +33,7 @@ export function App() {
       </p>
       <form>
         <textarea
+          ref={questionRef}
           defaultValue={"What is a minimalist entrepreneur?"}
           name="question"
           id="question"
@@ -17,7 +41,9 @@ export function App() {
           rows={3}
         />
       </form>
-      <button type="button">Ask question</button>
+      <button type="button" onClick={submitQuestion}>
+        Ask question
+      </button>
     </>
   );
 }
