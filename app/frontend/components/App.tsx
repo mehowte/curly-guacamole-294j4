@@ -20,7 +20,7 @@ export function App() {
     null
   );
   const [requestState, setRequestState] = useState<
-    "idle" | "in-progress" | "success" | "finished"
+    "idle" | "in-progress" | "success" | "finished" | "error"
   >("idle");
   function handleFeelingLuckyClick() {
     questionRef.current.value = generateRandomQuestion();
@@ -33,10 +33,14 @@ export function App() {
       return;
     }
     setRequestState("in-progress");
-    askQuestion(question).then((result) => {
-      setAnsweredQuestion(result);
-      setRequestState("success");
-    });
+    askQuestion(question)
+      .then((result) => {
+        setAnsweredQuestion(result);
+        setRequestState("success");
+      })
+      .catch(() => {
+        setRequestState("error");
+      });
   }
   function handleFinishTyping() {
     setRequestState("finished");
@@ -83,7 +87,13 @@ export function App() {
           />
         </p>
       )}
-      {requestState === "finished" && (
+      {requestState === "error" && (
+        <p>
+          An error occured and I couldn't answer your question. Please try again
+          later...
+        </p>
+      )}
+      {(requestState === "finished" || requestState === "error") && (
         <button type="button" onClick={handleReset}>
           Ask another question
         </button>
