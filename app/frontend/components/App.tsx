@@ -6,13 +6,20 @@ export function App() {
   const [answeredQuestion, setAnsweredQuestion] = useState<Question | null>(
     null
   );
+  const [requestState, setRequestState] = useState<
+    "idle" | "in-progress" | "success"
+  >("idle");
   function submitQuestion() {
     const question = String(questionRef.current.value).trim();
     if (question.length === 0) {
       alert("Please ask a question!");
       return;
     }
-    askQuestion(question).then(setAnsweredQuestion);
+    setRequestState("in-progress");
+    askQuestion(question).then((result) => {
+      setAnsweredQuestion(result);
+      setRequestState("success");
+    });
   }
   return (
     <>
@@ -24,6 +31,7 @@ export function App() {
       <form>
         <textarea
           ref={questionRef}
+          disabled={requestState !== "idle"}
           defaultValue={"What is a minimalist entrepreneur?"}
           name="question"
           id="question"
@@ -31,9 +39,12 @@ export function App() {
           rows={3}
         />
       </form>
-      <button type="button" onClick={submitQuestion}>
-        Ask question
-      </button>
+      {requestState === "idle" && (
+        <button type="button" onClick={submitQuestion}>
+          Ask question
+        </button>
+      )}
+      {requestState === "in-progress" && <p>Let me think about it...</p>}
       {answeredQuestion && (
         <p>
           <strong>Answer: </strong>
