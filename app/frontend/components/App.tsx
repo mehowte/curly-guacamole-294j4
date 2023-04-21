@@ -60,7 +60,7 @@ export function App() {
         <textarea
           ref={questionRef}
           disabled={requestState !== "idle"}
-          defaultValue={"What is a minimalist entrepreneur?"}
+          defaultValue={EXAMPLE_QUESTIONS[0]}
           name="question"
           id="question"
           cols={30}
