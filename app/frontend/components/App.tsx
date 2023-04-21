@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Question, askQuestion } from "../utils/api";
+import { TypedText } from "./TypedText";
 
 export function App() {
   const questionRef = React.useRef(null);
@@ -52,7 +53,7 @@ export function App() {
       {answeredQuestion && (
         <p>
           <strong>Answer: </strong>
-          {answeredQuestion.answer}
+          <TypedText text={answeredQuestion.answer} />
         </p>
       )}
       {requestState === "success" && (
