@@ -8,7 +8,7 @@ export function App() {
     null
   );
   const [requestState, setRequestState] = useState<
-    "idle" | "in-progress" | "success"
+    "idle" | "in-progress" | "success" | "finished"
   >("idle");
   function handleReset() {
     setRequestState("idle");
@@ -25,6 +25,9 @@ export function App() {
       setAnsweredQuestion(result);
       setRequestState("success");
     });
+  }
+  function handleFinishTyping() {
+    setRequestState("finished");
   }
   return (
     <>
@@ -53,10 +56,13 @@ export function App() {
       {answeredQuestion && (
         <p>
           <strong>Answer: </strong>
-          <TypedText text={answeredQuestion.answer} />
+          <TypedText
+            text={answeredQuestion.answer}
+            onFinished={handleFinishTyping}
+          />
         </p>
       )}
-      {requestState === "success" && (
+      {requestState === "finished" && (
         <button type="button" onClick={handleReset}>
           Ask another question
         </button>

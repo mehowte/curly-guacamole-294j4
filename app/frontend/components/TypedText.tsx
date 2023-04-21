@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react";
 
-export function TypedText({ text }: { text: string }) {
+export function TypedText({
+  text,
+  onFinished,
+}: {
+  text: string;
+  onFinished?: () => void;
+}) {
   const [typedText, setTypedText] = useState("");
   const timeoutRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
   useEffect(() => {
@@ -16,6 +22,8 @@ export function TypedText({ text }: { text: string }) {
       timeoutRef.current = setTimeout(() => {
         setTypedText(text.slice(0, typedText.length + 1));
       }, Math.random() * 20 + 30);
+    } else {
+      onFinished?.();
     }
     return () => {
       if (timeoutRef.current) {
