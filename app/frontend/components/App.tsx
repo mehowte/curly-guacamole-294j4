@@ -1,15 +1,18 @@
-import React from "react";
-import { askQuestion } from "../utils/api";
+import React, { useState } from "react";
+import { Question, askQuestion } from "../utils/api";
 
 export function App() {
   const questionRef = React.useRef(null);
+  const [answeredQuestion, setAnsweredQuestion] = useState<Question | null>(
+    null
+  );
   function submitQuestion() {
     const question = String(questionRef.current.value).trim();
     if (question.length === 0) {
       alert("Please ask a question!");
       return;
     }
-    askQuestion(question).then(console.log);
+    askQuestion(question).then(setAnsweredQuestion);
   }
   return (
     <>
@@ -31,6 +34,12 @@ export function App() {
       <button type="button" onClick={submitQuestion}>
         Ask question
       </button>
+      {answeredQuestion && (
+        <p>
+          <strong>Answer: </strong>
+          {answeredQuestion.answer}
+        </p>
+      )}
     </>
   );
 }
