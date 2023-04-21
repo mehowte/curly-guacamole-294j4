@@ -21,7 +21,11 @@ async function askQuestion(question: string): Promise<Question> {
 export function App() {
   const questionRef = React.useRef(null);
   function submitQuestion() {
-    const question = questionRef.current.value;
+    const question = String(questionRef.current.value).trim();
+    if (question.length === 0) {
+      alert("Please ask a question!");
+      return;
+    }
     askQuestion(question).then(console.log);
   }
   return (
