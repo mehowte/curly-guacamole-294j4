@@ -2,6 +2,18 @@ import React, { useState } from "react";
 import { Question, askQuestion } from "../utils/api";
 import { TypedText } from "./TypedText";
 
+const EXAMPLE_QUESTIONS = [
+  "What is a minimalist entrepreneur?",
+  "What is your definition of community?",
+  "How do I decide what kind of business I should start?",
+] as const;
+
+function generateRandomQuestion() {
+  return EXAMPLE_QUESTIONS[
+    Math.floor(Math.random() * EXAMPLE_QUESTIONS.length)
+  ];
+}
+
 export function App() {
   const questionRef = React.useRef(null);
   const [answeredQuestion, setAnsweredQuestion] = useState<Question | null>(
@@ -10,9 +22,9 @@ export function App() {
   const [requestState, setRequestState] = useState<
     "idle" | "in-progress" | "success" | "finished"
   >("idle");
-  function handleReset() {
-    setRequestState("idle");
-    setAnsweredQuestion(null);
+  function handleFeelingLuckyClick() {
+    questionRef.current.value = generateRandomQuestion();
+    submitQuestion();
   }
   function submitQuestion() {
     const question = String(questionRef.current.value).trim();
@@ -28,6 +40,10 @@ export function App() {
   }
   function handleFinishTyping() {
     setRequestState("finished");
+  }
+  function handleReset() {
+    setRequestState("idle");
+    setAnsweredQuestion(null);
   }
   return (
     <>
@@ -48,9 +64,14 @@ export function App() {
         />
       </form>
       {requestState === "idle" && (
-        <button type="button" onClick={submitQuestion}>
-          Ask question
-        </button>
+        <div>
+          <button type="button" onClick={submitQuestion}>
+            Ask question
+          </button>
+          <button type="button" onClick={handleFeelingLuckyClick}>
+            Feeling lucky
+          </button>
+        </div>
       )}
       {requestState === "in-progress" && <p>Let me think about it...</p>}
       {answeredQuestion && (
