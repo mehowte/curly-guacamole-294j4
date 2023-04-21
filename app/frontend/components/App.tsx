@@ -9,6 +9,10 @@ export function App() {
   const [requestState, setRequestState] = useState<
     "idle" | "in-progress" | "success"
   >("idle");
+  function handleReset() {
+    setRequestState("idle");
+    setAnsweredQuestion(null);
+  }
   function submitQuestion() {
     const question = String(questionRef.current.value).trim();
     if (question.length === 0) {
@@ -50,6 +54,11 @@ export function App() {
           <strong>Answer: </strong>
           {answeredQuestion.answer}
         </p>
+      )}
+      {requestState === "success" && (
+        <button type="button" onClick={handleReset}>
+          Ask another question
+        </button>
       )}
     </>
   );
