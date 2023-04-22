@@ -15,6 +15,11 @@ class Api::QuestionsController < ApiController
     render json: question, status: :created
   end
 
+  def show
+    question = Question.find(params[:id])
+    render json: question, status: :ok
+  end
+
   def audio
     id = params[:id]
     audio_src_url = params[:url]
