@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Question, askQuestion, getQuestion } from "../utils/api";
 import { TypedText } from "./TypedText";
+import { AutoplayAudio } from "./AutoplayAudio";
 
 const EXAMPLE_QUESTIONS = [
   "What is a minimalist entrepreneur?",
@@ -110,10 +111,9 @@ export function App() {
         </p>
       )}
       {answeredQuestion?.audio_src_url && (
-        <audio key={answeredQuestion?.audio_src_url} controls={true}>
-          <source src={answeredQuestion?.audio_src_url} />
-        </audio>
+        <AutoplayAudio src={answeredQuestion.audio_src_url} />
       )}
+
       {requestState === "error" && (
         <p>
           An error occured and I couldn't answer your question. Please try again
