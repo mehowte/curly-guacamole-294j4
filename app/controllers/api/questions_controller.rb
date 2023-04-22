@@ -13,13 +13,6 @@ class Api::QuestionsController < ApiController
   end
 end
 
-SAMPLE_QUESTIONS = {
-  "What is a minimalist entrepreneur?" => "A minimalist entrepreneur is someone who builds a business according to eight principles, the first of which is prioritizing profitability over growth.",
-  "Who is Sahil Lavingia?" => "Sahil Lavingia is the founder of Gumroad, a minimalist entrepreneur, and the author of Minimalist Entrepreneurship.",
-}
-
 def generate_answer(question_asked)
-  answer = SAMPLE_QUESTIONS[question_asked] 
-  return "I don't know the answer to that question." if answer.blank?
-  answer
+   OpenaiClient.build.generate_answer(question_asked)
 end
