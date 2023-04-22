@@ -87,6 +87,11 @@ export function App() {
           />
         </p>
       )}
+      {answeredQuestion?.audio_src_url && (
+        <audio key={answeredQuestion?.audio_src_url} controls={true}>
+          <source src={answeredQuestion?.audio_src_url} />
+        </audio>
+      )}
       {requestState === "error" && (
         <p>
           An error occured and I couldn't answer your question. Please try again
