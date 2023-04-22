@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Question, askQuestion } from "../utils/api";
+import React, { useState, useEffect } from "react";
+import { Question, askQuestion, getQuestion } from "../utils/api";
 import { TypedText } from "./TypedText";
 
 const EXAMPLE_QUESTIONS = [
@@ -13,12 +13,33 @@ function generateRandomQuestion() {
     Math.floor(Math.random() * EXAMPLE_QUESTIONS.length)
   ];
 }
+const MAX_QUESTION_REFRESH_RETRIES = 10;
+const QUESTION_REFRESH_INTERVAL = 1500;
 
 export function App() {
   const questionRef = React.useRef(null);
   const [answeredQuestion, setAnsweredQuestion] = useState<Question | null>(
     null
   );
+  const [questionRefreshRetryCount, setQuestionRefreshRetryCount] = useState(
+    MAX_QUESTION_REFRESH_RETRIES
+  );
+  useEffect(() => {
+    if (!answeredQuestion) return;
+    if (answeredQuestion.audio_src_url) return;
+    if (questionRefreshRetryCount <= 0) return;
+    const timeout = setTimeout(() => {
+      getQuestion(answeredQuestion.id)
+        .then((result) => {
+          if (result) {
+            setAnsweredQuestion(result);
+            setQuestionRefreshRetryCount((prev) => prev - 1);
+          }
+        })
+        .catch(console.error);
+    }, QUESTION_REFRESH_INTERVAL);
+    return () => clearTimeout(timeout);
+  }, [answeredQuestion, questionRefreshRetryCount]);
   const [requestState, setRequestState] = useState<
     "idle" | "in-progress" | "success" | "finished" | "error"
   >("idle");
@@ -48,6 +69,7 @@ export function App() {
   function handleReset() {
     setRequestState("idle");
     setAnsweredQuestion(null);
+    setQuestionRefreshRetryCount(MAX_QUESTION_REFRESH_RETRIES);
   }
   return (
     <>
