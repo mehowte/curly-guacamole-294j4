@@ -9,6 +9,9 @@ class Api::QuestionsController < ApiController
     if question.blank?
       question = Question.create!({question: question_asked, answer: generate_answer(question_asked)})
     end
+    if question.audio_src_url.blank?
+      request_audio_file(question)
+    end
     render json: question, status: :created
   end
 
@@ -23,4 +26,9 @@ end
 
 def generate_answer(question_asked)
    OpenaiClient.build.generate_answer(question_asked)
+end
+
+def request_audio_file(question)
+  callback_uri = ENV['BASE_URL'] + "/api/questions/#{question.id}/audio"
+  ResembleClient.build.request_audio_file(question.answer, callback_uri)
 end
