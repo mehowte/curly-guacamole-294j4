@@ -5,8 +5,10 @@ class Api::QuestionsController < ApiController
       return
     end
     question_asked = Question.normalize_question(params[:question])
-    answer = generate_answer(question_asked)
-    question = { answer: answer }
+    question = Question.find_by(question: question_asked)
+    if question.blank?
+      question = Question.create!({question: question_asked, answer: generate_answer(question_asked)})
+    end
     render json: question, status: :created
   end
 end
