@@ -16,3 +16,21 @@ export async function askQuestion(question: string): Promise<Question> {
     throw new Error("Something went wrong");
   }
 }
+
+export async function getQuestion(
+  questionId: number
+): Promise<Question | null> {
+  const response = await fetch(`/api/questions/${questionId}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  if (response.ok) {
+    return response.json();
+  } else if (response.status === 404) {
+    return null;
+  } else {
+    throw new Error("Something went wrong");
+  }
+}
