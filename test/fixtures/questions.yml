@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+love:
+  question: "What is love?"
+  answer: "Baby don't hurt me."
+
+ultimate:
+  question: "What is the answer to the ultimate question?"
+  answer: "42"
