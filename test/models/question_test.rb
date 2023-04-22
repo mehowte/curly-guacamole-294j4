@@ -18,4 +18,12 @@ class QuestionTest < ActiveSupport::TestCase
     load_fixtures :questions
     assert_not Question.new(question: "What is love?", answer: "Love is fleeting.").valid?
   end
+
+  test "normalize_question" do
+    assert_equal "Who is Sahil Lavingia?", Question.normalize_question("who is Sahil Lavingia?")
+    assert_equal "Who is Sahil Lavingia?", Question.normalize_question("Who is Sahil Lavingia")
+    assert_equal "Who is Sahil Lavingia?", Question.normalize_question("Who is Sahil Lavingia???")
+    assert_equal "Who is Sahil Lavingia?", Question.normalize_question("Who is Sahil Lavingia? ")
+    assert_equal "Who is Sahil Lavingia?", Question.normalize_question("\tWho is Sahil Lavingia?")
+  end
 end
