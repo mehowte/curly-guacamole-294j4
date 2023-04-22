@@ -152,6 +152,7 @@ GEM
     rake (13.0.6)
     reline (0.3.3)
       io-console (~> 0.5)
+    resemble (1.2.0)
     ruby-openai (3.7.0)
       httparty (>= 0.18.1)
     sprockets (4.2.0)
@@ -186,6 +187,7 @@ DEPENDENCIES
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.3)
+  resemble
   ruby-openai
   sprockets-rails
   tzinfo-data
