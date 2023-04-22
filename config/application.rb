@@ -30,7 +30,8 @@ module Askbook
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
-
+    
+    config.autoload_paths << "#{root}/app/api_clients"
     # Don't generate system test files.
     config.generators.system_tests = nil
   end
