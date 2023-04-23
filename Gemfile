@@ -22,6 +22,7 @@ gem "ruby-openai"
 gem "dotenv-rails"
 gem "resemble"
 gem 'pandas'
+gem 'numpy'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

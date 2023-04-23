@@ -190,6 +190,7 @@ PLATFORMS
 DEPENDENCIES
   debug
   dotenv-rails
+  numpy
   pandas
   pg (~> 1.1)
   puma (~> 5.0)
