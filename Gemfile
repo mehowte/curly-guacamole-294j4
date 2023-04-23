@@ -37,3 +37,5 @@ group :development do
   # gem "spring"
 end
 
+
+gem "tiktoken_ruby", "~> 0.0.4"

@@ -179,6 +179,7 @@ GEM
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
     thor (1.2.1)
+    tiktoken_ruby (0.0.4-arm64-darwin)
     timeout (0.3.2)
     ttfunk (1.7.0)
     tzinfo (2.0.6)
@@ -210,6 +211,7 @@ DEPENDENCIES
   resemble
   ruby-openai
   sprockets-rails
+  tiktoken_ruby (~> 0.0.4)
   tzinfo-data
   vite_rails
 
