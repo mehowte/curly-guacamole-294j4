@@ -1,0 +1,69 @@
+name: CI
+
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+    types:
+    - opened
+    - synchronize
+    - reopened
+
+jobs:
+  test:
+    name: ${{ matrix.os}} ${{ matrix.ruby }} ${{ matrix.python }}-${{ matrix.python_arch }}
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+        - ubuntu-latest
+        - macos-latest
+        ruby:
+        - 3.0
+        - 2.7
+        - 2.6
+        - 2.5
+        - 2.4
+        - debug
+        python:
+        - 3.8.x
+        - 3.7.x
+        - 3.6.x
+        - 2.7.x
+        python_arch:
+        - x64
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 1
+
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby }}
+
+    - uses: actions/setup-python@v1
+      with:
+        python-version: ${{ matrix.python }}
+        architecture: ${{ matrix.python_arch }}
+
+    - run: sudo apt-get install libsqlite3-dev
+      if: matrix.os == 'ubuntu-latest'
+
+    - run: brew install sqlite3
+      if: matrix.os == 'macos-latest'
+
+    - run: pip install -r requirements.txt
+
+    - run: gem install bundler
+    - run: bundle install
+
+    - run: bundle exec rake
+      env:
+        PYTHON: python
+
+    - run: rake build
+    - run: gem install pkg/*.gem
