@@ -23,6 +23,7 @@ gem "dotenv-rails"
 gem "resemble"
 gem 'pandas'
 gem 'numpy'
+gem 'pdf-reader'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
