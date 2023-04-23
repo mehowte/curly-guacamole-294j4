@@ -1,4 +1,10 @@
-require "openai"
+
+
+COMPLETIONS_MODEL_NAME = "text-davinci-003"
+
+EMBEDDINGS_MODEL_NAME = "curie"
+DOC_EMBEDDINGS_MODEL = "text-search-#{EMBEDDINGS_MODEL_NAME}-doc-001"
+QUERY_EMBEDDINGS_MODEL = "text-search-#{EMBEDDINGS_MODEL_NAME}-query-001"
 
 class OpenaiClient
     def self.build()
@@ -12,11 +18,20 @@ class OpenaiClient
         result = @client.completions(
             parameters: {
                 temperature: 0.0,
-                model: "text-davinci-003",
+                model: COMPLETIONS_MODEL_NAME,
                 prompt: generate_prompt(question_asked),
                 max_tokens: 150
             })
         result["choices"][0]["text"]
+    end
+
+    def get_embedding(text, model)
+        result = @client.embeddings(
+            parameters: {
+                model: model,
+                input: text
+            })
+        result["data"][0]["embedding"]
     end
 
     private
