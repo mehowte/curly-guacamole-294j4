@@ -24,6 +24,7 @@ gem "ruby-openai"
 gem "dotenv-rails"
 gem "resemble"
 gem "pdf-reader"
+gem "tiktoken_ruby", "~> 0.0.4"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -36,4 +37,4 @@ group :development do
 end
 
 
-gem "tiktoken_ruby", "~> 0.0.4"
+
