@@ -1,11 +1,17 @@
 import React from "react";
-
+declare global {
+  var PROJECT_NAME: string;
+}
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <div className="header">
         <div className="logo">
-          <img src="/book.png" alt="Book cover" loading="lazy" />
+          <img
+            src={`/${window.PROJECT_NAME}.png`}
+            alt="Book cover"
+            loading="lazy"
+          />
           <h1>Ask a book</h1>
         </div>
       </div>
