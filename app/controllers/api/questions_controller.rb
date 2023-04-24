@@ -7,7 +7,12 @@ class Api::QuestionsController < ApiController
     question_asked = Question.normalize_question(params[:question])
     question = Question.find_by(question: question_asked)
     if question.blank?
-      question = Question.create!({question: question_asked, answer: generate_answer(question_asked)})
+      question_embedding = QuestionEmbedding.find_by(question: question_asked)
+      if question_embedding.blank?
+        question_embedding = QuestionEmbedding.create!({question: question_asked, embedding: openai_client.get_embedding(question_asked)})
+      end
+      answer = openai_client.generate_answer(question_asked, question_embedding.embedding)
+      question = Question.create!({question: question_asked, answer: answer})
     end
     if question.audio_src_url.blank?
       request_audio_file(question)
@@ -29,8 +34,8 @@ class Api::QuestionsController < ApiController
   end
 end
 
-def generate_answer(question_asked)
-   OpenaiClient.build.generate_answer(question_asked)
+def openai_client
+  @openai_client ||= OpenaiClient.build
 end
 
 def request_audio_file(question)

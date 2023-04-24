@@ -14,10 +14,9 @@ class OpenaiClient
         @client = OpenAI::Client.new(access_token: access_token)
     end
 
-    def generate_answer(question_asked)
+    def generate_answer(question_asked, question_embedding)
         embeddings = load_fragment_embeddings(Rails.root.join("static_files", "book.pdf.embeddings.csv"))
         fragments = load_fragments(Rails.root.join("static_files", "book.pdf.pages.csv"))
-        question_embedding = get_embedding(question_asked)
         
         sorted_fragments = sort_fragments_by_distance(fragments, question_embedding, embeddings) 
         context = generate_context(sorted_fragments)
