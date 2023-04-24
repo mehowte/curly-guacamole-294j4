@@ -82,13 +82,17 @@ class OpenaiClient
         context = ""
         encoder = Tiktoken.encoding_for_model(COMPLETIONS_MODEL)
         separator_len = encoder.encode(SEPARATOR).length
-        context_len = 0
+        space_left = MAX_SECTION_LEN
         sorted_fragments.each do |fragment| 
-            context_len += fragment[:tokens] + separator_len
-            if context_len > MAX_SECTION_LEN    
-                space_left = MAX_SECTION_LEN - context_len
-                context += SEPARATOR + truncate_text(fragment[:content], space_left, encoder)
-                break
+            break if separator_len > space_left
+            space_left -= separator_len
+            if fragment[:tokens] > space_left
+              content = truncate_text(fragment[:content], space_left, encoder)
+              space_left = 0
+              break if (content.blank?)
+            else 
+              content = fragment[:content]
+              space_left -= fragment[:tokens]
             end
             context += SEPARATOR + fragment[:content]
         end
