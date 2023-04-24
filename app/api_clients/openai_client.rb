@@ -22,7 +22,7 @@ class OpenaiClient
         context = generate_context(sorted_fragments)
         prompt = generate_prompt(question_asked, context)
         
-        get_completion(prompt)
+        { answer: get_completion(prompt), context: context }
     end
 
     def get_completion(prompt)
