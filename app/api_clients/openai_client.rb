@@ -18,7 +18,7 @@ class OpenaiClient
         embeddings = load_fragment_embeddings(Rails.root.join("static_files", "book.pdf.embeddings.csv"))
         fragments = load_fragments(Rails.root.join("static_files", "book.pdf.pages.csv"))
         
-        sorted_fragments = sort_fragments_by_distance(fragments, question_embedding, embeddings) 
+        sorted_fragments = sort_fragments_by_similarity(fragments, question_embedding, embeddings) 
         context = generate_context(sorted_fragments)
         prompt = generate_prompt(question_asked, context)
         
@@ -62,15 +62,15 @@ class OpenaiClient
         fragments_by_title
     end
 
-    def sort_fragments_by_distance(fragments_by_title, question_embedding, fragment_embeddings)
+    def sort_fragments_by_similarity(fragments_by_title, question_embedding, fragment_embeddings)
         fragment_embeddings.map do |fragment_embedding|
-            distance = embedding_distance(question_embedding, fragment_embedding[:embedding])
+            similarity = embedding_similarity(question_embedding, fragment_embedding[:embedding])
             fragment = fragments_by_title[fragment_embedding[:title]]
-            {content: fragment[:content], tokens: fragment[:tokens], distance: distance}
-        end.sort_by { |embedding| embedding[:distance] }
+            {content: fragment[:content], tokens: fragment[:tokens], similarity: similarity}
+        end.sort_by { |embedding| embedding[:similarity] }.reverse! 
     end
 
-    def embedding_distance(x, y)
+    def embedding_similarity(x, y)
         # cosine similarity
         x.zip(y).map { |a, b| a * b }.reduce(:+) / (Math.sqrt(x.map { |a| a * a }.reduce(:+)) * Math.sqrt(y.map { |a| a * a }.reduce(:+)))
     end
