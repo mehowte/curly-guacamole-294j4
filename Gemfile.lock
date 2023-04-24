@@ -67,9 +67,13 @@ GEM
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
+    addressable (2.8.4)
+      public_suffix (>= 2.0.2, < 6.0)
     afm (0.2.2)
     builder (3.2.4)
     concurrent-ruby (1.2.2)
+    crack (0.4.5)
+      rexml
     crass (1.0.6)
     date (3.3.3)
     debug (1.7.2)
@@ -83,6 +87,7 @@ GEM
     erubi (1.12.0)
     globalid (1.1.0)
       activesupport (>= 5.0)
+    hashdiff (1.0.1)
     hashery (2.1.2)
     httparty (0.21.0)
       mini_mime (>= 1.0.0)
@@ -130,6 +135,7 @@ GEM
       ruby-rc4
       ttfunk
     pg (1.4.6)
+    public_suffix (5.0.1)
     puma (5.6.5)
       nio4r (~> 2.0)
     racc (1.6.2)
@@ -169,6 +175,7 @@ GEM
     reline (0.3.3)
       io-console (~> 0.5)
     resemble (1.2.0)
+    rexml (3.2.5)
     ruby-openai (3.7.0)
       httparty (>= 0.18.1)
     ruby-rc4 (0.1.5)
@@ -188,6 +195,7 @@ GEM
     ttfunk (1.7.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
+    vcr (6.1.0)
     vite_rails (3.0.14)
       railties (>= 5.1, < 8)
       vite_ruby (~> 3.0, >= 3.2.2)
@@ -195,6 +203,10 @@ GEM
       dry-cli (>= 0.7, < 2)
       rack-proxy (~> 0.6, >= 0.6.1)
       zeitwerk (~> 2.2)
+    webmock (3.18.1)
+      addressable (>= 2.8.0)
+      crack (>= 0.3.2)
+      hashdiff (>= 0.4.0, < 2.0.0)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -217,7 +229,9 @@ DEPENDENCIES
   sprockets-rails
   tiktoken_ruby (~> 0.0.4)
   tzinfo-data
+  vcr
   vite_rails
+  webmock
 
 RUBY VERSION
    ruby 3.2.2p53
