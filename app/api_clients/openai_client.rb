@@ -3,6 +3,8 @@ class OpenaiClient
     EMBEDDINGS_MODEL = "text-embedding-ada-002"
     MAX_EMBEDDING_TOKENS = 8191
     MAX_EMBEDDING_DIMENSIONS = 1536
+    EMBEDDINGS_FILE = "#{ENV["PROJECT_NAME"]}.pdf.embeddings.csv"
+    FRAGMENTS_FILE = "#{ENV["PROJECT_NAME"]}.pdf.pages.csv"
 
     MAX_SECTION_LEN = 500
     SEPARATOR = "\n* "
@@ -15,8 +17,8 @@ class OpenaiClient
     end
 
     def generate_answer(question_asked, question_embedding)
-        embeddings = load_fragment_embeddings(Rails.root.join("static_files", "book.pdf.embeddings.csv"))
-        fragments = load_fragments(Rails.root.join("static_files", "book.pdf.pages.csv"))
+        embeddings = load_fragment_embeddings(Rails.root.join("static_files", EMBEDDINGS_FILE))
+        fragments = load_fragments(Rails.root.join("static_files", FRAGMENTS_FILE))
         
         sorted_fragments = sort_fragments_by_similarity(fragments, question_embedding, embeddings) 
         context = generate_context(sorted_fragments)
