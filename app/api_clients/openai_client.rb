@@ -72,8 +72,6 @@ class OpenaiClient
     end
 
     def embedding_distance(x, y)
-        # dot product
-        #x.zip(y).map { |a, b| a * b }.reduce(:+)
         # cosine similarity
         x.zip(y).map { |a, b| a * b }.reduce(:+) / (Math.sqrt(x.map { |a| a * a }.reduce(:+)) * Math.sqrt(y.map { |a| a * a }.reduce(:+)))
     end
