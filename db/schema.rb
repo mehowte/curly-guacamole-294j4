@@ -10,9 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_22_122449) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_24_073732) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "question_embeddings", force: :cascade do |t|
+    t.string "question", null: false
+    t.jsonb "embedding", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question"], name: "index_question_embeddings_on_question", unique: true
+  end
 
   create_table "questions", force: :cascade do |t|
     t.string "question", null: false

@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+love:
+  question: "What is love?"
+  embedding: [0.3, 0.9, 0.7, 0.001]
+
+why:
+  question: "Why?"
+  embedding: [0.03, 0.00009, 0.007, 0.1]
