@@ -4,6 +4,9 @@ class OpenaiClient
     MAX_EMBEDDING_TOKENS = 8191
     MAX_EMBEDDING_DIMENSIONS = 1536
 
+    MAX_SECTION_LEN = 500
+    SEPARATOR = "\n* "
+
     def self.build()
         new(ENV["OPENAI_API_KEY"])
     end
@@ -12,11 +15,23 @@ class OpenaiClient
     end
 
     def generate_answer(question_asked)
+        embeddings = load_fragment_embeddings(Rails.root.join("static_files", "book.pdf.embeddings.csv"))
+        fragments = load_fragments(Rails.root.join("static_files", "book.pdf.pages.csv"))
+        question_embedding = get_embedding(question_asked)
+        
+        sorted_fragments = sort_fragments_by_distance(fragments, question_embedding, embeddings) 
+        context = generate_context(sorted_fragments)
+        prompt = generate_prompt(question_asked, context)
+        
+        get_completion(prompt)
+    end
+
+    def get_completion(prompt)
         result = @client.completions(
             parameters: {
                 temperature: 0.0,
                 model: COMPLETIONS_MODEL,
-                prompt: generate_prompt(question_asked),
+                prompt: prompt,
                 max_tokens: 150
             })
         result["choices"][0]["text"]
@@ -32,10 +47,68 @@ class OpenaiClient
     end
 
     private
-    def generate_prompt(question_asked)
+    def load_fragment_embeddings(file_path)
+        fragment_embeddings = []
+        CSV.foreach(file_path, headers: true, return_headers: false) do |row|
+            fragment_embeddings << {title: row[0], embedding: row[1..-1].map(&:to_f)}
+        end
+        fragment_embeddings
+    end
+    
+    def load_fragments(file_path)
+        fragments_by_title = {}
+        CSV.foreach(file_path, headers: true) do |row|
+            fragments_by_title[row["title"]] = { content: row["content"], tokens: row["tokens"].to_i }
+        end
+        fragments_by_title
+    end
+
+    def sort_fragments_by_distance(fragments_by_title, question_embedding, fragment_embeddings)
+        fragment_embeddings.map do |fragment_embedding|
+            distance = embedding_distance(question_embedding, fragment_embedding[:embedding])
+            fragment = fragments_by_title[fragment_embedding[:title]]
+            {content: fragment[:content], tokens: fragment[:tokens], distance: distance}
+        end.sort_by { |embedding| embedding[:distance] }
+    end
+
+    def embedding_distance(x, y)
+        # dot product
+        #x.zip(y).map { |a, b| a * b }.reduce(:+)
+        # cosine similarity
+        x.zip(y).map { |a, b| a * b }.reduce(:+) / (Math.sqrt(x.map { |a| a * a }.reduce(:+)) * Math.sqrt(y.map { |a| a * a }.reduce(:+)))
+    end
+
+    def generate_context(sorted_fragments)
+        context = ""
+        encoder = Tiktoken.encoding_for_model(COMPLETIONS_MODEL)
+        separator_len = encoder.encode(SEPARATOR).length
+        context_len = 0
+        sorted_fragments.each do |fragment| 
+            context_len += fragment[:tokens] + separator_len
+            if context_len > MAX_SECTION_LEN    
+                space_left = MAX_SECTION_LEN - context_len
+                context += SEPARATOR + truncate_text(fragment[:content], space_left, encoder)
+                break
+            end
+            context += SEPARATOR + fragment[:content]
+        end
+        context
+    end
+
+    def truncate_text(text, max_tokens, encoder)
+        tokens = encoder.encode(text)
+        encoder.decode(tokens[0..max_tokens])
+    end
+
+    def generate_prompt(question_asked, context)
     <<~PROMPT
     Sahil Lavingia is the founder and CEO of Gumroad, and the author of the book The Minimalist Entrepreneur (also known as TME). These are questions and answers by him. Please keep your answers to three sentences maximum, and speak in complete sentences. Stop speaking once your point is made.
     
+
+    Context that may be useful, pulled from The Minimalist Entrepreneur:
+    #{context}
+
+
     Q:How to choose what business to start?
     
     A:First off don't be in a rush. Look around you, see what problems you or other people are facing, and solve one of these problems if you see some overlap with your passions or skills. Or, even if you don't see an overlap, imagine how you would solve that problem anyway. Start super, super small.
