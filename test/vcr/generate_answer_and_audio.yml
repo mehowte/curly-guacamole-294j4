@@ -24,7 +24,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 24 Apr 2023 20:18:25 GMT
+      - Mon, 24 Apr 2023 21:19:41 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -36,7 +36,7 @@ http_interactions:
       Openai-Organization:
       - user-yyosfx3igbduiyrp6p467sds
       Openai-Processing-Ms:
-      - '176'
+      - '173'
       Openai-Version:
       - '2020-10-01'
       Strict-Transport-Security:
@@ -48,13 +48,13 @@ http_interactions:
       X-Ratelimit-Reset-Requests:
       - 20ms
       X-Request-Id:
-      - 3a50a78bd458d5b93a5ce84ab474a7f0
+      - e319aa12c7c9c53ae7a5a797509497d2
       Cf-Cache-Status:
       - DYNAMIC
       Server:
       - cloudflare
       Cf-Ray:
-      - 7bd1090e0927fc67-WAW
+      - 7bd162cc9c1f35c7-WAW
       Alt-Svc:
       - h3=":443"; ma=86400, h3-29=":443"; ma=86400
     body:
@@ -1612,114 +1612,76 @@ http_interactions:
             "total_tokens": 9
           }
         }
-  recorded_at: Mon, 24 Apr 2023 20:18:25 GMT
+  recorded_at: Mon, 24 Apr 2023 21:19:41 GMT
 - request:
     method: post
     uri: https://api.openai.com/v1/completions
     body:
       encoding: UTF-8
-      string: '{"temperature":0.0,"model":"text-davinci-003","prompt":"Sahil Lavingia
-        is the founder and CEO of Gumroad, and the author of the book The Minimalist
-        Entrepreneur (also known as TME). These are questions and answers by him.
-        Please keep your answers to three sentences maximum, and speak in complete
-        sentences. Stop speaking once your point is made.\n\n\nContext that may be
-        useful, pulled from The Minimalist Entrepreneur:\n\n* HANSEL AND GRETEL Hard
-        by a great forest dwelt a poor wood-cutter with his wife and his two children.
-        The boy was called Hansel and the girl Gretel. He had little to bite and to
-        break, and once when great dearth fell on the land, he could no longer procure
-        even daily bread. Now when he thought over this by night in his bed, and tossed
-        about in his anxiety, he groaned and said to his wife: ‘What is to become
-        of us? How are we to feed our poor children, when we no longer have anything
-        even for ourselves?’ ‘I’ll tell you what, husband,’ answered the woman, ‘early
-        tomorrow morning we will take the children out into the forest to where it
-        is the thickest; there we will light a ﬁre for them, and give each of them
-        one more piece of bread, and then we will go to our work and leave them alone.
-        They will not ﬁnd the way home again, and we shall be rid of them.’ ‘No, wife,’
-        said the man, ‘I will not do that; how can I bear to leave my children alone
-        in the forest?—the wild animals would soon come and tear them to pieces.’
-        ‘O, you fool!’ said she, ‘then we must all four die of hunger, you may as
-        well plane the planks for our cofﬁns,’ and she left him no peace until he
-        consented. ‘But I feel very sorry for the poor children, all the same,’ said
-        the man. The two children had also not been able to sleep for hunger, and
-        had heard what their stepmother had said to their father. Gretel wept bitter
-        tears, and said to Hansel: ‘Now all is over with us.’ ‘Be quiet, Gretel,’
-        said Hansel, ‘do not distress yourself, I will soon ﬁnd a way to help us.’
-        And when the old folks had fallen asleep, he got up, put on his little coat,
-        opened the door below, and crept outside. The moon shone brightly, and the
-        white pebbles which lay in front of the house glittered like real silver pennies.
-        Hansel stooped and stuffed the little pocket of his coat with as many as he
-        could get in. Then he went\n* had risen, Hansel took his little sister by
-        the hand, and followed the pebbles which shone like newly-coined silver pieces,
-        and showed them the way. They walked the whole night long, and by break of
-        day came once more to their father’s house. They knocked at the door, and
-        when the woman opened it and saw that it was Hansel and Gretel, she said:
-        ‘You naughty children, why have you slept so long in the forest?—we thought
-        you were never coming back at all!’ The father, however, rejoiced, for it
-        had cut him to the heart to leave them behind alone. Not long afterwards,
-        there was once more great dearth throughout the land, and the children heard
-        their mother saying at night to their father: ‘Everything is eaten again,
-        we have one half loaf left, and that is the end. The children must go, we
-        will take them farther into the wood, so that they will not ﬁnd their way
-        out again; there is no other means of saving ourselves!’ The man’s heart was
-        heavy, and he thought: ‘It would be better for you to share the last mouthful
-        with your children.’ The woman, however, would listen to nothing that he had
-        to say, but scolded and reproached him. He who says A must say B, likewise,
-        and as he had yielded the ﬁrst time, he had to do so a second time also. The
-        children, however, were still awake and had heard the conversation. When the
-        old folks were asleep, Hansel again got up, and wanted to go out and pick
-        up pebbles as he had done before, but the woman had locked the door, and Hansel
-        could not get out. Nevertheless he comforted his little sister, and said:
-        ‘Do not cry, Gretel, go to sleep quietly, the good God will help us.’ Early
-        in the morning came the woman, and took the children out of their beds. Their
-        piece of bread was given to them, but it was still smaller than the time before.
-        On the way into the forest Hansel crumbled his in his pocket, and often stood
-        still and threw a morsel on the ground. ‘Hansel, why do you stop and look
-        round?’ said the father, ‘go on.’ ‘I am looking back at my little pigeon which
-        is sitting on the roof, and wants to say goodbye to me,’ answered Hansel.
-        ‘Fool!’ said the woman, ‘that is not your little pigeon, that is the morning
-        sun that\n\n\nQ:How to choose what business to start?\n\nA:First off don''t
-        be in a rush. Look around you, see what problems you or other people are facing,
-        and solve one of these problems if you see some overlap with your passions
-        or skills. Or, even if you don''t see an overlap, imagine how you would solve
-        that problem anyway. Start super, super small.\n\n\n\nQ:Should we start the
-        business on the side first or should we put full effort right from the start?\n\nA:Always
-        on the side. Things start small and get bigger from there, and I don''t know
-        if I would ever “fully” commit to something unless I had some semblance of
-        customer traction. Like with this product I''m working on now!\n\n\n\nQ:Should
-        we sell first than build or the other way around?\n\nA:I would recommend building
-        first. Building will teach you a lot, and too many people use “sales” as an
-        excuse to never learn essential skills like building. You can''t sell a house
-        you can''t build!\n\n\n\nQ:Andrew Chen has a book on this so maybe touché,
-        but how should founders think about the cold start problem? Businesses are
-        hard to start, and even harder to sustain but the latter is somewhat defined
-        and structured, whereas the former is the vast unknown. Not sure if it''s
-        worthy, but this is something I have personally struggled with\n\nA:Hey, this
-        is about my book, not his! I would solve the problem from a single player
-        perspective first. For example, Gumroad is useful to a creator looking to
-        sell something even if no one is currently using the platform. Usage helps,
-        but it''s not necessary.\n\n\n\nQ:What is one business that you think is ripe
-        for a minimalist Entrepreneur innovation that isn''t currently being pursued
-        by your community?\n\nA:I would move to a place outside of a big city and
-        watch how broken, slow, and non-automated most things are. And of course the
-        big categories like housing, transportation, toys, healthcare, supply chain,
-        food, and more, are constantly being upturned. Go to an industry conference
-        and it''s all they talk about! Any industry…\n\n\n\nQ:How can you tell if
-        your pricing is right? If you are leaving money on the table\n\nA:I would
-        work backwards from the kind of success you want, how many customers you think
-        you can reasonably get to within a few years, and then reverse engineer how
-        much it should be priced to make that work.\n\n\n\nQ:Why is the name of your
-        book ''the minimalist entrepreneur'' \n\nA:I think more people should start
-        businesses, and was hoping that making it feel more “minimal” would make it
-        feel more achievable and lead more people to starting-the hardest step.\n\n\n\nQ:How
-        long it takes to write TME\n\nA:About 500 hours over the course of a year
-        or two, including book proposal and outline.\n\n\n\nQ:What is the best way
-        to distribute surveys to test my product idea\n\nA:I use Google Forms and
-        my email list / Twitter account. Works great and is 100% free.\n\n\n\nQ:How
-        do you know, when to quit\n    \nA:When I''m bored, no longer learning, not
-        earning enough, getting physically unhealthy, etc… loads of reasons. I think
-        the default should be to “quit” and work on something new. Few things are
-        worth holding your attention for a long period of time.\n\n\n\nQ:What did
-        Hansel and Gretel do?\n    \nA:\n","max_tokens":150}'
+      string: '{"temperature":0.0,"model":"text-davinci-003","prompt":"\n\n* HANSEL
+        AND GRETEL Hard by a great forest dwelt a poor wood-cutter with his wife and
+        his two children. The boy was called Hansel and the girl Gretel. He had little
+        to bite and to break, and once when great dearth fell on the land, he could
+        no longer procure even daily bread. Now when he thought over this by night
+        in his bed, and tossed about in his anxiety, he groaned and said to his wife:
+        ‘What is to become of us? How are we to feed our poor children, when we no
+        longer have anything even for ourselves?’ ‘I’ll tell you what, husband,’ answered
+        the woman, ‘early tomorrow morning we will take the children out into the
+        forest to where it is the thickest; there we will light a ﬁre for them, and
+        give each of them one more piece of bread, and then we will go to our work
+        and leave them alone. They will not ﬁnd the way home again, and we shall be
+        rid of them.’ ‘No, wife,’ said the man, ‘I will not do that; how can I bear
+        to leave my children alone in the forest?—the wild animals would soon come
+        and tear them to pieces.’ ‘O, you fool!’ said she, ‘then we must all four
+        die of hunger, you may as well plane the planks for our cofﬁns,’ and she left
+        him no peace until he consented. ‘But I feel very sorry for the poor children,
+        all the same,’ said the man. The two children had also not been able to sleep
+        for hunger, and had heard what their stepmother had said to their father.
+        Gretel wept bitter tears, and said to Hansel: ‘Now all is over with us.’ ‘Be
+        quiet, Gretel,’ said Hansel, ‘do not distress yourself, I will soon ﬁnd a
+        way to help us.’ And when the old folks had fallen asleep, he got up, put
+        on his little coat, opened the door below, and crept outside. The moon shone
+        brightly, and the white pebbles which lay in front of the house glittered
+        like real silver pennies. Hansel stooped and stuffed the little pocket of
+        his coat with as many as he could get in. Then he went\n* had risen, Hansel
+        took his little sister by the hand, and followed the pebbles which shone like
+        newly-coined silver pieces, and showed them the way. They walked the whole
+        night long, and by break of day came once more to their father’s house. They
+        knocked at the door, and when the woman opened it and saw that it was Hansel
+        and Gretel, she said: ‘You naughty children, why have you slept so long in
+        the forest?—we thought you were never coming back at all!’ The father, however,
+        rejoiced, for it had cut him to the heart to leave them behind alone. Not
+        long afterwards, there was once more great dearth throughout the land, and
+        the children heard their mother saying at night to their father: ‘Everything
+        is eaten again, we have one half loaf left, and that is the end. The children
+        must go, we will take them farther into the wood, so that they will not ﬁnd
+        their way out again; there is no other means of saving ourselves!’ The man’s
+        heart was heavy, and he thought: ‘It would be better for you to share the
+        last mouthful with your children.’ The woman, however, would listen to nothing
+        that he had to say, but scolded and reproached him. He who says A must say
+        B, likewise, and as he had yielded the ﬁrst time, he had to do so a second
+        time also. The children, however, were still awake and had heard the conversation.
+        When the old folks were asleep, Hansel again got up, and wanted to go out
+        and pick up pebbles as he had done before, but the woman had locked the door,
+        and Hansel could not get out. Nevertheless he comforted his little sister,
+        and said: ‘Do not cry, Gretel, go to sleep quietly, the good God will help
+        us.’ Early in the morning came the woman, and took the children out of their
+        beds. Their piece of bread was given to them, but it was still smaller than
+        the time before. On the way into the forest Hansel crumbled his in his pocket,
+        and often stood still and threw a morsel on the ground. ‘Hansel, why do you
+        stop and look round?’ said the father, ‘go on.’ ‘I am looking back at my little
+        pigeon which is sitting on the roof, and wants to say goodbye to me,’ answered
+        Hansel. ‘Fool!’ said the woman, ‘that is not your little pigeon, that is the
+        morning sun that\n\n\nQ:Who is Hansel and Gretel?\n\nA:Hansel and Gretel are
+        the two children of a poor woodcutter in a Brothers Grimm fairytale. They
+        get lost in the forest and eventually find their way home with the help of
+        Hansel''s clever plan of leaving a trail of pebbles.\n\n\nQ:What happened
+        to Rumpelstiltskin?\n\nA:Rumpelstiltskin was so angry that he stamped his
+        foot so hard that it went into the ground, and he was never seen again.\n\n\nQ:How
+        the frog became the prince again?\n\nA:The frog became the prince again when
+        the princess agreed to his request and allowed him to eat from her plate and
+        sleep on her bed for three nights. On the third night, the frog was transformed
+        into a handsome prince.\n\n\nQ:What did Hansel and Gretel do?\n\nA:\n","max_tokens":150}'
     headers:
       Content-Type:
       - application/json
@@ -1737,7 +1699,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 24 Apr 2023 20:18:30 GMT
+      - Mon, 24 Apr 2023 21:19:45 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -1753,7 +1715,7 @@ http_interactions:
       Openai-Organization:
       - user-yyosfx3igbduiyrp6p467sds
       Openai-Processing-Ms:
-      - '3263'
+      - '2974'
       Openai-Version:
       - '2020-10-01'
       Strict-Transport-Security:
@@ -1771,32 +1733,33 @@ http_interactions:
       X-Ratelimit-Reset-Tokens:
       - 36ms
       X-Request-Id:
-      - 30f7c3f12e233020822220a604ca01ed
+      - f6745fa177298f2b9dc2e3fa8d804a05
       Cf-Cache-Status:
       - DYNAMIC
       Server:
       - cloudflare
       Cf-Ray:
-      - 7bd109139d43fbe6-WAW
+      - 7bd162d2e9b4bf47-WAW
       Alt-Svc:
       - h3=":443"; ma=86400, h3-29=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"cmpl-78wviu0fzdjh4J9VRhQ0ILb0bPzjG","object":"text_completion","created":1682367506,"model":"text-davinci-003","choices":[{"text":"Hansel
-        and Gretel were two children who were abandoned in the forest by their stepmother.
-        Hansel used pebbles to mark their path so they could find their way back home.
-        They eventually made it back home safely.","index":0,"logprobs":null,"finish_reason":"stop"}],"usage":{"prompt_tokens":1918,"completion_tokens":46,"total_tokens":1964}}
+      string: '{"id":"cmpl-78xt0Sl7ibpvihq9evO4oJiQXcnTf","object":"text_completion","created":1682371182,"model":"text-davinci-003","choices":[{"text":"Hansel
+        and Gretel were able to escape their stepmother''s plan to abandon them in
+        the forest by Hansel''s clever plan of leaving a trail of pebbles. They followed
+        the pebbles back home and were reunited with their father.","index":0,"logprobs":null,"finish_reason":"stop"}],"usage":{"prompt_tokens":1264,"completion_tokens":50,"total_tokens":1314}}
 
         '
-  recorded_at: Mon, 24 Apr 2023 20:18:29 GMT
+  recorded_at: Mon, 24 Apr 2023 21:19:45 GMT
 - request:
     method: post
     uri: https://app.resemble.ai/api/v2/projects/536aae49/clips
     body:
       encoding: UTF-8
-      string: '{"body":"Hansel and Gretel were two children who were abandoned in
-        the forest by their stepmother. Hansel used pebbles to mark their path so
-        they could find their way back home. They eventually made it back home safely.","voice_uuid":"4c6d3da5","output_format":"mp3","callback_uri":"https://b11d-83-10-59-40.ngrok-free.app/api/questions/1070045964/audio"}'
+      string: '{"body":"Hansel and Gretel were able to escape their stepmother''s
+        plan to abandon them in the forest by Hansel''s clever plan of leaving a trail
+        of pebbles. They followed the pebbles back home and were reunited with their
+        father.","voice_uuid":"4c6d3da5","output_format":"mp3","callback_uri":"https://b11d-83-10-59-40.ngrok-free.app/api/questions/1070045964/audio"}'
     headers:
       Content-Type:
       - application/json
@@ -1816,12 +1779,12 @@ http_interactions:
       Server:
       - Cowboy
       Date:
-      - Mon, 24 Apr 2023 20:18:30 GMT
+      - Mon, 24 Apr 2023 21:19:45 GMT
       Connection:
       - keep-alive
       Set-Cookie:
-      - heroku-session-affinity=ADaDaANoA24IAXKRAf////8HYgAFm5ZiAAaNdWECbAAAAAJtAAAABXdlYi4ybQAAAAV3ZWIuMWqmJCxlanpznx7R+qHVmaqWKMlZVg__;
-        Version=1; Expires=Tue, 25-Apr-2023 20:18:30 GMT; Max-Age=86400; Domain=app.resemble.ai;
+      - heroku-session-affinity=ADaDaANoA24IAbHwxf7///8HYgAFqfJiAAI5tGECbAAAAAJtAAAABXdlYi4xbQAAAAV3ZWIuMmqUWRV1n3jxJm/28jD388Q8iLas6Q__;
+        Version=1; Expires=Tue, 25-Apr-2023 21:19:46 GMT; Max-Age=86400; Domain=app.resemble.ai;
         Path=/
       X-Frame-Options:
       - SAMEORIGIN
@@ -1840,13 +1803,13 @@ http_interactions:
       Vary:
       - Accept, Origin
       Etag:
-      - W/"f8527d81259b20469e6e56ab43937f9b"
+      - W/"1f24741fd1a485e0319128e253fcffed"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 82a22dd0-3881-423b-b455-695c4942c2a5
+      - e3619b1f-89ab-4d59-acc3-0c69e0933aeb
       X-Runtime:
-      - '0.042163'
+      - '0.042777'
       Strict-Transport-Security:
       - max-age=63072000; includeSubDomains
       Transfer-Encoding:
@@ -1855,9 +1818,9 @@ http_interactions:
       - 1.1 vegur
     body:
       encoding: UTF-8
-      string: '{"success":true,"item":{"uuid":"40d3cee0","body":"Hansel and Gretel
-        were two children who were abandoned in the forest by their stepmother. Hansel
-        used pebbles to mark their path so they could find their way back home. They
-        eventually made it back home safely.","voice_uuid":"4c6d3da5","is_public":true,"is_archived":false,"created_at":"2023-04-24T20:18:30.455Z","updated_at":"2023-04-24T20:18:30.455Z"}}'
-  recorded_at: Mon, 24 Apr 2023 20:18:30 GMT
+      string: '{"success":true,"item":{"uuid":"3e69ce54","body":"Hansel and Gretel
+        were able to escape their stepmother''s plan to abandon them in the forest
+        by Hansel''s clever plan of leaving a trail of pebbles. They followed the
+        pebbles back home and were reunited with their father.","voice_uuid":"4c6d3da5","is_public":true,"is_archived":false,"created_at":"2023-04-24T21:19:46.163Z","updated_at":"2023-04-24T21:19:46.163Z"}}'
+  recorded_at: Mon, 24 Apr 2023 21:19:46 GMT
 recorded_with: VCR 6.1.0

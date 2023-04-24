@@ -1,0 +1,23 @@
+---
+sample_questions:
+  [
+    "Who is Hansel and Gretel?",
+    "What happened to Rumpelstiltskin?",
+    "How the frog became the prince again?",
+  ]
+prompt_header: "The Brothers Grimm, Jacob and Wilhelm, were a brother duo of German academics, philologists, cultural researchers, lexicographers, and authors who together collected and published folklore. These are questions and answers related to their Fairy Tales. Please keep your answers to three sentences maximum, and speak in complete sentences. Stop speaking once your point is made.\n\nContext that may be useful, pulled from Grimms' Fairy Tales:"
+questions_and_answers:
+  [
+    [
+      "Who is Hansel and Gretel?",
+      "Hansel and Gretel are the two children of a poor woodcutter in a Brothers Grimm fairytale. They get lost in the forest and eventually find their way home with the help of Hansel's clever plan of leaving a trail of pebbles.",
+    ],
+    [
+      "What happened to Rumpelstiltskin?",
+      "Rumpelstiltskin was so angry that he stamped his foot so hard that it went into the ground, and he was never seen again.",
+    ],
+    [
+      "How the frog became the prince again?",
+      "The frog became the prince again when the princess agreed to his request and allowed him to eat from her plate and sleep on her bed for three nights. On the third night, the frog was transformed into a handsome prince.",
+    ],
+  ]
