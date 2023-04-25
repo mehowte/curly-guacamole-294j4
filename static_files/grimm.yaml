@@ -1,11 +1,13 @@
 ---
 sample_questions:
   [
+    "Who is Hans?",
     "Who is Hansel and Gretel?",
     "What happened to Rumpelstiltskin?",
     "How the frog became the prince again?",
   ]
-prompt_header: "The Brothers Grimm, Jacob and Wilhelm, were a brother duo of German academics, philologists, cultural researchers, lexicographers, and authors who together collected and published folklore. These are questions and answers related to their Fairy Tales. Please keep your answers to three sentences maximum, and speak in complete sentences. Stop speaking once your point is made.\n\nContext that may be useful, pulled from Grimms' Fairy Tales:"
+prompt_header: "The Brothers Grimm, Jacob and Wilhelm, were a brother duo of German academics, philologists, cultural researchers, lexicographers, and authors who together collected and published folklore. These are questions and answers related to their Fairy Tales. Please keep your answers to three sentences maximum, and speak in complete sentences. Stop speaking once your point is made."
+context_header: "Context that may be useful, pulled from Grimms' Fairy Tales:"
 questions_and_answers:
   [
     [
