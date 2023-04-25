@@ -25,7 +25,7 @@ http_interactions:
         message: OK
       headers:
         Date:
-          - Tue, 25 Apr 2023 21:43:22 GMT
+          - Tue, 25 Apr 2023 21:43:15 GMT
         Content-Type:
           - application/json
         Transfer-Encoding:
@@ -37,7 +37,7 @@ http_interactions:
         Openai-Organization:
           - user-yyosfx3igbduiyrp6p467sds
         Openai-Processing-Ms:
-          - "285"
+          - "128"
         Openai-Version:
           - "2020-10-01"
         Strict-Transport-Security:
@@ -49,13 +49,13 @@ http_interactions:
         X-Ratelimit-Reset-Requests:
           - 20ms
         X-Request-Id:
-          - 54b5388adc687a503545d126c70f97ec
+          - af2bcfa45c294062bc5789c774f24fa4
         Cf-Cache-Status:
           - DYNAMIC
         Server:
           - cloudflare
         Cf-Ray:
-          - 7bd9c2d84c8dfc5b-WAW
+          - 7bd9c2b1785dbff0-WAW
         Alt-Svc:
           - h3=":443"; ma=86400, h3-29=":443"; ma=86400
       body:
@@ -1613,83 +1613,87 @@ http_interactions:
               "total_tokens": 9
             }
           }
-    recorded_at: Tue, 25 Apr 2023 21:43:22 GMT
+    recorded_at: Tue, 25 Apr 2023 21:43:15 GMT
   - request:
       method: post
-      uri: https://api.openai.com/v1/completions
+      uri: https://api.openai.com/v1/chat/completions
       body:
         encoding: UTF-8
         string:
-          '{"temperature":0.0,"model":"text-davinci-003","prompt":"The Brothers
-          Grimm, Jacob and Wilhelm, were a brother duo of German academics, philologists,
-          cultural researchers, lexicographers, and authors who together collected and
-          published folklore. These are questions and answers related to their Fairy
-          Tales. Please keep your answers to three sentences maximum, and speak in complete
-          sentences. Stop speaking once your point is made.\n\n\nContext that may be
-          useful, pulled from Grimms'' Fairy Tales:\n\n* HANSEL AND GRETEL Hard by a
-          great forest dwelt a poor wood-cutter with his wife and his two children.
-          The boy was called Hansel and the girl Gretel. He had little to bite and to
-          break, and once when great dearth fell on the land, he could no longer procure
-          even daily bread. Now when he thought over this by night in his bed, and tossed
-          about in his anxiety, he groaned and said to his wife: ‘What is to become
-          of us? How are we to feed our poor children, when we no longer have anything
-          even for ourselves?’ ‘I’ll tell you what, husband,’ answered the woman, ‘early
-          tomorrow morning we will take the children out into the forest to where it
-          is the thickest; there we will light a ﬁre for them, and give each of them
-          one more piece of bread, and then we will go to our work and leave them alone.
-          They will not ﬁnd the way home again, and we shall be rid of them.’ ‘No, wife,’
-          said the man, ‘I will not do that; how can I bear to leave my children alone
-          in the forest?—the wild animals would soon come and tear them to pieces.’
-          ‘O, you fool!’ said she, ‘then we must all four die of hunger, you may as
-          well plane the planks for our cofﬁns,’ and she left him no peace until he
-          consented. ‘But I feel very sorry for the poor children, all the same,’ said
-          the man. The two children had also not been able to sleep for hunger, and
-          had heard what their stepmother had said to their father. Gretel wept bitter
-          tears, and said to Hansel: ‘Now all is over with us.’ ‘Be quiet, Gretel,’
-          said Hansel, ‘do not distress yourself, I will soon ﬁnd a way to help us.’
-          And when the old folks had fallen asleep, he got up, put on his little coat,
-          opened the door below, and crept outside. The moon shone brightly, and the
-          white pebbles which lay in front of the house glittered like real silver pennies.
-          Hansel stooped and stuffed the little pocket of his coat with as many as he
-          could get in. Then he went\n* had risen, Hansel took his little sister by
-          the hand, and followed the pebbles which shone like newly-coined silver pieces,
-          and showed them the way. They walked the whole night long, and by break of
-          day came once more to their father’s house. They knocked at the door, and
-          when the woman opened it and saw that it was Hansel and Gretel, she said:
-          ‘You naughty children, why have you slept so long in the forest?—we thought
-          you were never coming back at all!’ The father, however, rejoiced, for it
-          had cut him to the heart to leave them behind alone. Not long afterwards,
-          there was once more great dearth throughout the land, and the children heard
-          their mother saying at night to their father: ‘Everything is eaten again,
-          we have one half loaf left, and that is the end. The children must go, we
-          will take them farther into the wood, so that they will not ﬁnd their way
-          out again; there is no other means of saving ourselves!’ The man’s heart was
-          heavy, and he thought: ‘It would be better for you to share the last mouthful
-          with your children.’ The woman, however, would listen to nothing that he had
-          to say, but scolded and reproached him. He who says A must say B, likewise,
-          and as he had yielded the ﬁrst time, he had to do so a second time also. The
-          children, however, were still awake and had heard the conversation. When the
-          old folks were asleep, Hansel again got up, and wanted to go out and pick
-          up pebbles as he had done before, but the woman had locked the door, and Hansel
-          could not get out. Nevertheless he comforted his little sister, and said:
-          ‘Do not cry, Gretel, go to sleep quietly, the good God will help us.’ Early
-          in the morning came the woman, and took the children out of their beds. Their
-          piece of bread was given to them, but it was still smaller than the time before.
+          '{"model":"gpt-3.5-turbo","messages":[{"role":"system","content":"You
+          are a helpful assistant. You answer questions related to a book and it''s
+          author."},{"role":"user","content":"The Brothers Grimm, Jacob and Wilhelm,
+          were a brother duo of German academics, philologists, cultural researchers,
+          lexicographers, and authors who together collected and published folklore.
+          These are questions and answers related to their Fairy Tales. Please keep
+          your answers to three sentences maximum, and speak in complete sentences.
+          Stop speaking once your point is made.\n\n\nContext that may be useful, pulled
+          from Grimms'' Fairy Tales:\n\n* HANSEL AND GRETEL Hard by a great forest dwelt
+          a poor wood-cutter with his wife and his two children. The boy was called
+          Hansel and the girl Gretel. He had little to bite and to break, and once when
+          great dearth fell on the land, he could no longer procure even daily bread.
+          Now when he thought over this by night in his bed, and tossed about in his
+          anxiety, he groaned and said to his wife: ‘What is to become of us? How are
+          we to feed our poor children, when we no longer have anything even for ourselves?’
+          ‘I’ll tell you what, husband,’ answered the woman, ‘early tomorrow morning
+          we will take the children out into the forest to where it is the thickest;
+          there we will light a ﬁre for them, and give each of them one more piece of
+          bread, and then we will go to our work and leave them alone. They will not
+          ﬁnd the way home again, and we shall be rid of them.’ ‘No, wife,’ said the
+          man, ‘I will not do that; how can I bear to leave my children alone in the
+          forest?—the wild animals would soon come and tear them to pieces.’ ‘O, you
+          fool!’ said she, ‘then we must all four die of hunger, you may as well plane
+          the planks for our cofﬁns,’ and she left him no peace until he consented.
+          ‘But I feel very sorry for the poor children, all the same,’ said the man.
+          The two children had also not been able to sleep for hunger, and had heard
+          what their stepmother had said to their father. Gretel wept bitter tears,
+          and said to Hansel: ‘Now all is over with us.’ ‘Be quiet, Gretel,’ said Hansel,
+          ‘do not distress yourself, I will soon ﬁnd a way to help us.’ And when the
+          old folks had fallen asleep, he got up, put on his little coat, opened the
+          door below, and crept outside. The moon shone brightly, and the white pebbles
+          which lay in front of the house glittered like real silver pennies. Hansel
+          stooped and stuffed the little pocket of his coat with as many as he could
+          get in. Then he went\n* had risen, Hansel took his little sister by the hand,
+          and followed the pebbles which shone like newly-coined silver pieces, and
+          showed them the way. They walked the whole night long, and by break of day
+          came once more to their father’s house. They knocked at the door, and when
+          the woman opened it and saw that it was Hansel and Gretel, she said: ‘You
+          naughty children, why have you slept so long in the forest?—we thought you
+          were never coming back at all!’ The father, however, rejoiced, for it had
+          cut him to the heart to leave them behind alone. Not long afterwards, there
+          was once more great dearth throughout the land, and the children heard their
+          mother saying at night to their father: ‘Everything is eaten again, we have
+          one half loaf left, and that is the end. The children must go, we will take
+          them farther into the wood, so that they will not ﬁnd their way out again;
+          there is no other means of saving ourselves!’ The man’s heart was heavy, and
+          he thought: ‘It would be better for you to share the last mouthful with your
+          children.’ The woman, however, would listen to nothing that he had to say,
+          but scolded and reproached him. He who says A must say B, likewise, and as
+          he had yielded the ﬁrst time, he had to do so a second time also. The children,
+          however, were still awake and had heard the conversation. When the old folks
+          were asleep, Hansel again got up, and wanted to go out and pick up pebbles
+          as he had done before, but the woman had locked the door, and Hansel could
+          not get out. Nevertheless he comforted his little sister, and said: ‘Do not
+          cry, Gretel, go to sleep quietly, the good God will help us.’ Early in the
+          morning came the woman, and took the children out of their beds. Their piece
+          of bread was given to them, but it was still smaller than the time before.
           On the way into the forest Hansel crumbled his in his pocket, and often stood
           still and threw a morsel on the ground. ‘Hansel, why do you stop and look
           round?’ said the father, ‘go on.’ ‘I am looking back at my little pigeon which
           is sitting on the roof, and wants to say goodbye to me,’ answered Hansel.
           ‘Fool!’ said the woman, ‘that is not your little pigeon, that is the morning
-          sun that\n\n\nQ:Who is Hansel and Gretel?\n\nA:Hansel and Gretel are the two
-          children of a poor woodcutter in a Brothers Grimm fairytale. They get lost
-          in the forest and eventually find their way home with the help of Hansel''s
-          clever plan of leaving a trail of pebbles.\n\n\nQ:What happened to Rumpelstiltskin?\n\nA:Rumpelstiltskin
+          sun that"},{"role":"user","content":"Who is Hansel and Gretel?"},{"role":"assistant","content":"Hansel
+          and Gretel are the two children of a poor woodcutter in a Brothers Grimm fairytale.
+          They get lost in the forest and eventually find their way home with the help
+          of Hansel''s clever plan of leaving a trail of pebbles."},{"role":"user","content":"What
+          happened to Rumpelstiltskin?"},{"role":"assistant","content":"Rumpelstiltskin
           was so angry that he stamped his foot so hard that it went into the ground,
-          and he was never seen again.\n\n\nQ:How the frog became the prince again?\n\nA:The
-          frog became the prince again when the princess agreed to his request and allowed
-          him to eat from her plate and sleep on her bed for three nights. On the third
-          night, the frog was transformed into a handsome prince.\n\n\nQ:What did Hansel
-          and Gretel do?\n\nA:","max_tokens":150}'
+          and he was never seen again."},{"role":"user","content":"How the frog became
+          the prince again?"},{"role":"assistant","content":"The frog became the prince
+          again when the princess agreed to his request and allowed him to eat from
+          her plate and sleep on her bed for three nights. On the third night, the frog
+          was transformed into a handsome prince."},{"role":"user","content":"What did
+          Hansel and Gretel do?"}],"temperature":0.0}'
       headers:
         Content-Type:
           - application/json
@@ -1707,7 +1711,7 @@ http_interactions:
         message: OK
       headers:
         Date:
-          - Tue, 25 Apr 2023 21:43:25 GMT
+          - Tue, 25 Apr 2023 21:43:21 GMT
         Content-Type:
           - application/json
         Transfer-Encoding:
@@ -1719,56 +1723,52 @@ http_interactions:
         Cache-Control:
           - no-cache, must-revalidate
         Openai-Model:
-          - text-davinci-003
+          - gpt-3.5-turbo-0301
         Openai-Organization:
           - user-yyosfx3igbduiyrp6p467sds
         Openai-Processing-Ms:
-          - "2443"
+          - "4680"
         Openai-Version:
           - "2020-10-01"
         Strict-Transport-Security:
           - max-age=15724800; includeSubDomains
         X-Ratelimit-Limit-Requests:
-          - "3000"
-        X-Ratelimit-Limit-Tokens:
-          - "250000"
+          - "3500"
         X-Ratelimit-Remaining-Requests:
-          - "2999"
-        X-Ratelimit-Remaining-Tokens:
-          - "249850"
+          - "3499"
         X-Ratelimit-Reset-Requests:
-          - 20ms
-        X-Ratelimit-Reset-Tokens:
-          - 36ms
+          - 17ms
         X-Request-Id:
-          - 6792cdf382b5d199ff45ae68e75bef2a
+          - 5101d638f4386238091547affe1f48e9
         Cf-Cache-Status:
           - DYNAMIC
         Server:
           - cloudflare
         Cf-Ray:
-          - 7bd9c2ddf8d534f1-WAW
+          - 7bd9c2b6ae98354e-WAW
         Alt-Svc:
           - h3=":443"; ma=86400, h3-29=":443"; ma=86400
       body:
         encoding: ASCII-8BIT
         string:
-          '{"id":"cmpl-79KjSPQlEuAyjAZtOPnFlMPtbQ9rY","object":"text_completion","created":1682459002,"model":"text-davinci-003","choices":[{"text":"Hansel
-          and Gretel escaped their stepmother''s plan to abandon them in the forest
-          by Hansel leaving a trail of pebbles to help them find their way home. They
-          eventually made it back to their father''s house.","index":0,"logprobs":null,"finish_reason":"stop"}],"usage":{"prompt_tokens":1348,"completion_tokens":46,"total_tokens":1394}}
+          '{"id":"chatcmpl-79KjNmuRCjStbvVD23rm5rIruxssW","object":"chat.completion","created":1682458997,"model":"gpt-3.5-turbo-0301","usage":{"prompt_tokens":1312,"completion_tokens":58,"total_tokens":1370},"choices":[{"message":{"role":"assistant","content":"Hansel
+          and Gretel were two children who got lost in the forest after their parents
+          left them there. They eventually found a gingerbread house, which belonged
+          to a wicked witch who wanted to eat them. However, they managed to outsmart
+          the witch and escape from her clutches."},"finish_reason":"stop","index":0}]}
 
           '
-    recorded_at: Tue, 25 Apr 2023 21:43:25 GMT
+    recorded_at: Tue, 25 Apr 2023 21:43:21 GMT
   - request:
       method: post
       uri: https://app.resemble.ai/api/v2/projects/{RESEMBLE_PROJECT_ID}/clips
       body:
         encoding: UTF-8
         string:
-          '{"body":"Hansel and Gretel escaped their stepmother''s plan to abandon
-          them in the forest by Hansel leaving a trail of pebbles to help them find
-          their way home. They eventually made it back to their father''s house.","voice_uuid":"{RESEMBLE_VOICE_ID}","output_format":"mp3","callback_uri":"http://example.com/api/questions/1070045965/audio"}'
+          '{"body":"Hansel and Gretel were two children who got lost in the forest
+          after their parents left them there. They eventually found a gingerbread house,
+          which belonged to a wicked witch who wanted to eat them. However, they managed
+          to outsmart the witch and escape from her clutches.","voice_uuid":"{RESEMBLE_VOICE_ID}","output_format":"mp3","callback_uri":"http://example.com/api/questions/1070045965/audio"}'
       headers:
         Content-Type:
           - application/json
@@ -1788,12 +1788,12 @@ http_interactions:
         Server:
           - Cowboy
         Date:
-          - Tue, 25 Apr 2023 21:43:24 GMT
+          - Tue, 25 Apr 2023 21:43:20 GMT
         Connection:
           - keep-alive
         Set-Cookie:
-          - heroku-session-affinity=ADaDaANoA24IAZ270fv///8HYgAHAP1iAAeXA2ECbAAAAAJtAAAABXdlYi4ybQAAAAV3ZWIuMWozM/INMaHC8ciPIVgtio5fIoF7Og__;
-            Version=1; Expires=Wed, 26-Apr-2023 21:43:25 GMT; Max-Age=86400; Domain=app.resemble.ai;
+          - heroku-session-affinity=ADaDaANoA24IAaY/zf3///8HYgAHAPliAAbWYWECbAAAAAJtAAAABXdlYi4xbQAAAAV3ZWIuMmqREF/G/zhAId1QSxNi/RKOrK1m2w__;
+            Version=1; Expires=Wed, 26-Apr-2023 21:43:21 GMT; Max-Age=86400; Domain=app.resemble.ai;
             Path=/
         X-Frame-Options:
           - SAMEORIGIN
@@ -1812,13 +1812,13 @@ http_interactions:
         Vary:
           - Accept, Origin
         Etag:
-          - W/"7f69f9bbf03f87016c78b67c2cbc986a"
+          - W/"5a10623bae93c37b924b59c00cddf89b"
         Cache-Control:
           - max-age=0, private, must-revalidate
         X-Request-Id:
-          - 6d6ba28e-dd2f-459e-bb32-3f66c16a5ab9
+          - ff051ae4-9629-4312-bf9a-d216fb094d15
         X-Runtime:
-          - "0.042590"
+          - "0.061891"
         Strict-Transport-Security:
           - max-age=63072000; includeSubDomains
         Transfer-Encoding:
@@ -1828,9 +1828,10 @@ http_interactions:
       body:
         encoding: UTF-8
         string:
-          '{"success":true,"item":{"uuid":"350ee660","body":"Hansel and Gretel
-          escaped their stepmother''s plan to abandon them in the forest by Hansel leaving
-          a trail of pebbles to help them find their way home. They eventually made
-          it back to their father''s house.","voice_uuid":"{RESEMBLE_VOICE_ID}","is_public":true,"is_archived":false,"created_at":"2023-04-25T21:43:25.514Z","updated_at":"2023-04-25T21:43:25.514Z"}}'
-    recorded_at: Tue, 25 Apr 2023 21:43:25 GMT
+          '{"success":true,"item":{"uuid":"23c74f62","body":"Hansel and Gretel
+          were two children who got lost in the forest after their parents left them
+          there. They eventually found a gingerbread house, which belonged to a wicked
+          witch who wanted to eat them. However, they managed to outsmart the witch
+          and escape from her clutches.","voice_uuid":"{RESEMBLE_VOICE_ID}","is_public":true,"is_archived":false,"created_at":"2023-04-25T21:43:21.467Z","updated_at":"2023-04-25T21:43:21.467Z"}}'
+    recorded_at: Tue, 25 Apr 2023 21:43:21 GMT
 recorded_with: VCR 6.1.0

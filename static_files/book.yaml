@@ -11,10 +11,8 @@ prompt_header: "Book author is a shitposter from 4chan. These are questions and 
 context_header: "Context that may be useful, pulled from The Book:"
 questions_and_answers:
   [
-    [
-      ["What is love?", "Baby don't hurt me."],
-      ["What is life?", "Shrek is life."],
-      ["What is the answer to the ultimate question?", "42"],
-      ["Why?", "Why not?"],
-    ],
+    ["What is love?", "Baby don't hurt me."],
+    ["What is life?", "Shrek is life."],
+    ["What is the answer to the ultimate question?", "42"],
+    ["Why?", "Why not?"],
   ]

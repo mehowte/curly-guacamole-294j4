@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: post
-    uri: https://app.resemble.ai/api/v2/projects/536aae49/clips
+    uri: https://app.resemble.ai/api/v2/projects/{RESEMBLE_PROJECT_ID}/clips
     body:
       encoding: UTF-8
-      string: '{"body":"42","voice_uuid":"4c6d3da5","output_format":"mp3","callback_uri":"https://b11d-83-10-59-40.ngrok-free.app/api/questions/1070045963/audio"}'
+      string: '{"body":"42","voice_uuid":"{RESEMBLE_VOICE_ID}","output_format":"mp3","callback_uri":"{BASE_URL}/api/questions/1070045963/audio"}'
     headers:
       Content-Type:
       - application/json
@@ -25,12 +25,12 @@ http_interactions:
       Server:
       - Cowboy
       Date:
-      - Mon, 24 Apr 2023 21:19:45 GMT
+      - Tue, 25 Apr 2023 21:43:14 GMT
       Connection:
       - keep-alive
       Set-Cookie:
-      - heroku-session-affinity=ADaDaANoA24IAWDJiv7///8HYgAFqfJiAAmF42ECbAAAAAJtAAAABXdlYi4ybQAAAAV3ZWIuMWqty/E0Szw2R5/tG3iF7EPLruf2yw__;
-        Version=1; Expires=Tue, 25-Apr-2023 21:19:46 GMT; Max-Age=86400; Domain=app.resemble.ai;
+      - heroku-session-affinity=ADaDaANoA24IATW1//7///8HYgAHAPNiAALkpWECbAAAAAJtAAAABXdlYi4ybQAAAAV3ZWIuMWpNKKJY2ivVFJNpe88xjLHYRMjhYA__;
+        Version=1; Expires=Wed, 26-Apr-2023 21:43:15 GMT; Max-Age=86400; Domain=app.resemble.ai;
         Path=/
       X-Frame-Options:
       - SAMEORIGIN
@@ -49,13 +49,13 @@ http_interactions:
       Vary:
       - Accept, Origin
       Etag:
-      - W/"06875c9a7c2d925cc0b3668b59eae03c"
+      - W/"b844c8364debefc5ff7cc6fa9f91f38f"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - a5be3941-2751-4b8a-a9a2-a9e5a1335b7d
+      - 11407007-8e9f-4ab1-b535-530a2de437f2
       X-Runtime:
-      - '0.052202'
+      - '0.049117'
       Strict-Transport-Security:
       - max-age=63072000; includeSubDomains
       Transfer-Encoding:
@@ -64,6 +64,6 @@ http_interactions:
       - 1.1 vegur
     body:
       encoding: UTF-8
-      string: '{"success":true,"item":{"uuid":"c49f07a2","body":"42","voice_uuid":"4c6d3da5","is_public":true,"is_archived":false,"created_at":"2023-04-24T21:19:46.646Z","updated_at":"2023-04-24T21:19:46.646Z"}}'
-  recorded_at: Mon, 24 Apr 2023 21:19:46 GMT
+      string: '{"success":true,"item":{"uuid":"81b950f8","body":"42","voice_uuid":"{RESEMBLE_VOICE_ID}","is_public":true,"is_archived":false,"created_at":"2023-04-25T21:43:15.211Z","updated_at":"2023-04-25T21:43:15.211Z"}}'
+  recorded_at: Tue, 25 Apr 2023 21:43:15 GMT
 recorded_with: VCR 6.1.0

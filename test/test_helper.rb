@@ -10,6 +10,9 @@ VCR.configure do |c|
   c.allow_http_connections_when_no_cassette = false
   c.filter_sensitive_data("{OPENAI_API_KEY}"){ ENV.fetch("OPENAI_API_KEY") }
   c.filter_sensitive_data("{RESEMBLE_API_KEY}"){ ENV.fetch("RESEMBLE_API_KEY") }
+  c.filter_sensitive_data("{BASE_URL}"){ ENV.fetch("BASE_URL") }
+  c.filter_sensitive_data("{RESEMBLE_VOICE_ID}"){ ENV.fetch("RESEMBLE_VOICE_ID") }
+  c.filter_sensitive_data("{RESEMBLE_PROJECT_ID}"){ ENV.fetch("RESEMBLE_PROJECT_ID") }
 end
 
 class ActiveSupport::TestCase
