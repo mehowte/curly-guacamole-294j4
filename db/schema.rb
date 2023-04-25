@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_25_122716) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_25_180238) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -30,7 +30,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_25_122716) do
     t.string "audio_src_url"
     t.text "context"
     t.string "project_name", default: "book", null: false
-    t.index ["project_name", "question"], name: "index_questions_on_project_name_and_question", unique: true
+    t.string "openai_model", default: "text-davinci-003", null: false
+    t.index ["project_name", "question", "openai_model"], name: "index_questions_on_project_name_and_question_and_openai_model", unique: true
   end
 
 end
