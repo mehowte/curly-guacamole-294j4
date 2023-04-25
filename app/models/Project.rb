@@ -1,11 +1,23 @@
 class Project
-    def build
+    def self.build
         new(ENV["PROJECT_NAME"])
     end
 
     def initialize(name)
         @name = name
         @config = YAML.load_file(file_path("#{name}.yaml"))
+    end
+
+    def name
+        @name
+    end
+
+    def title
+        @config["title"]
+    end
+
+    def cover
+        @config["cover"]
     end
 
     def sample_questions

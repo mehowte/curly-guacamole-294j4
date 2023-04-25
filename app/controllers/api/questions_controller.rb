@@ -51,7 +51,7 @@ class Api::QuestionsController < ApiController
   end
 
   def project
-    @project ||= Project.new(ENV["PROJECT_NAME"])
+    @project ||= Project.build
   end
 
   def request_audio_file(question)

@@ -1,14 +1,11 @@
 import React from "react";
-declare global {
-  var PROJECT_NAME: string;
-}
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <div className="header">
         <div className="logo">
           <img
-            src={`/${window.PROJECT_NAME}.png`}
+            src={`/${window.project.cover}`}
             alt="Book cover"
             loading="lazy"
           />
@@ -23,7 +20,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         {children}
       </main>
       <footer>
-        <p className="credits">
+        <div className="credits">
           Project by <a href="https://twitter.com/shl">Sahil Lavingia</a> •{" "}
           <a href="https://github.com/slavingia/askmybook">Fork on GitHub</a>
           <hr />
@@ -32,7 +29,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
           <a href="https://github.com/mehowte/curly-guacamole-294j4">
             Fork on GitHub
           </a>
-        </p>
+        </div>
       </footer>
     </>
   );

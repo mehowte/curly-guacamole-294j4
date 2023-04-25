@@ -10,7 +10,7 @@
     <%= vite_client_tag %>
     <%= vite_typescript_tag 'application.tsx' %>
     <script>
-      window.PROJECT_NAME = "<%= ENV["PROJECT_NAME"] || "book" %>"
+      window.project = <%== project.to_json %>
     </script>
   </head>
 

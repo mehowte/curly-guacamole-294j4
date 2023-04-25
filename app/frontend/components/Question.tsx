@@ -3,11 +3,7 @@ import { Question, askQuestion, getQuestion } from "../utils/api";
 import { TypedText } from "./TypedText";
 import { AutoplayAudio } from "./AutoplayAudio";
 
-const EXAMPLE_QUESTIONS = [
-  "What is a minimalist entrepreneur?",
-  "What is your definition of community?",
-  "How do I decide what kind of business I should start?",
-] as const;
+const EXAMPLE_QUESTIONS = window.project.sampleQuestions;
 
 function generateRandomQuestion() {
   return EXAMPLE_QUESTIONS[
