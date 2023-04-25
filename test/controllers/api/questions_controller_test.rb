@@ -19,7 +19,7 @@ class HomepageControllerTest < ActionDispatch::IntegrationTest
     VCR.use_cassette(:generate_answer_and_audio, :match_requests_on => [:method, :host, :body]) do
       post api_questions_url, params: { question: "What did Hansel and Gretel do?" }
       assert_response :success
-      assert_equal JSON.parse(response.body)["answer"], "Hansel and Gretel were able to escape their stepmother's plan to abandon them in the forest by Hansel's clever plan of leaving a trail of pebbles. They followed the pebbles back home and were reunited with their father."
+      assert_equal JSON.parse(response.body)["answer"], "Hansel and Gretel escaped their stepmother's plan to abandon them in the forest by Hansel leaving a trail of pebbles to help them find their way home. They eventually made it back to their father's house."
     end
   end
 end

@@ -11,8 +11,9 @@ class Api::QuestionsController < ApiController
       if question_embedding.blank?
         question_embedding = QuestionEmbedding.create!({question: question_asked, embedding: openai_client.get_embedding(question_asked)})
       end
-      result = openai_client.generate_answer(question_asked, question_embedding.embedding)
-      question = Question.create!({question: question_asked, answer: result[:answer], context: result[:context]})
+      context = build_context(question_embedding.embedding)
+      answer = get_answer(question_asked, context)
+      question = Question.create!({question: question_asked, answer: answer, context: context})
     end
     if question.audio_src_url.blank?
       request_audio_file(question)
@@ -32,13 +33,30 @@ class Api::QuestionsController < ApiController
     question.update(audio_src_url: audio_src_url)
     render json: question, status: :ok
   end
+
+  private
+
+  def build_context(question_embedding)
+    ContextBuilder.new(project).build_context(question_embedding)
+  end
+
+  def get_answer(question_asked, context)
+    openai_client.get_completion(
+      PromptBuilder.new(project).build_prompt(question_asked, context)
+    )
+  end
+
+  def openai_client
+    @openai_client ||= OpenaiClient.build
+  end
+
+  def project
+    @project ||= Project.new(ENV["PROJECT_NAME"])
+  end
+
+  def request_audio_file(question)
+    callback_uri = ENV['BASE_URL'] + "/api/questions/#{question.id}/audio"
+    ResembleClient.build.request_audio_file(question.answer, callback_uri)
+  end
 end
 
-def openai_client
-  @openai_client ||= OpenaiClient.build
-end
-
-def request_audio_file(question)
-  callback_uri = ENV['BASE_URL'] + "/api/questions/#{question.id}/audio"
-  ResembleClient.build.request_audio_file(question.answer, callback_uri)
-end
