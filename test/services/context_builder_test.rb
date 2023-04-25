@@ -1,0 +1,16 @@
+require "test_helper"
+
+class ContextBuilderTest < ActiveSupport::TestCase
+  def setup
+    @builder = ContextBuilder.new(Project.new("book"))
+  end
+
+  test "builds prompt with context" do
+    VCR.use_cassette(:context_builder_question_embedding) do
+      question_embedding = OpenaiClient.build.get_embedding("Are you gonna give me up?")
+      expected_context = "\n* We're no strangers to love You know the rules and so do I (do I) A full commitment's what I'm thinking of You wouldn't get this from any other guy I just wanna tell you how I'm feeling Gotta make you understand Never gonna give you up Never gonna let you down Never gonna run around and desert you Never gonna make you cry Never gonna say goodbye Never gonna tell a lie and hurt you We've known each other for so long Your heart's been aching, but you're too shy to say it (say it) Inside, we both know what's been going on (going on) We know the game and we're gonna play it And if you ask me how I'm feeling Don't tell me you're too blind to see Never gonna give you up Never gonna let you down Never gonna run around and desert you Never gonna make you cry Never gonna say goodbye Never gonna tell a lie and hurt you Never gonna give you up Never gonna let you down Never gonna run around and desert you Never gonna make you cry Never gonna say goodbye Never gonna tell a lie and hurt you We've known each other for so long Your heart's been aching, but you're too shy to say it (to say it) Inside, we both know what's been going on (going on) We know the game and we're gonna play it I just wanna tell you how I'm feeling Gotta make you understand Never gonna give you up Never gonna let you down Never gonna run around and desert you Never gonna make you cry Never gonna say goodbye Never gonna tell a lie and hurt you Never gonna give you up Never gonna let you down Never gonna run around and desert you Never gonna make you cry Never gonna say goodbye Never gonna tell a lie and hurt you Never gonna give you up Never gonna let you down Never gonna run around and desert you Never gonna make you cry Never gonna say goodbye Never gonna tell a lie and hurt you\n* What is love? Oh baby, don't hurt me Don't hurt me No more Baby, don't hurt me, don't hurt me No more What is love? Yeah No, I don't know why you're not fair I give you my love, but you don't care So what is right and what is wrong? Gimme a sign What is love? Oh baby, don't hurt me Don't hurt me No more What is love? Oh baby, don't hurt me Don't hurt me No more Whoa, whoa, oh Whoa, whoa, oh Oh, I don't know, what can I do? What else can I say? It's up to you I know we're one, just me and you I can't go on What is love? Oh baby, don't hurt me Don't hurt me No more What is love? Oh baby, don't hurt me Don't hurt me No more Whoa, whoa, oh Whoa, whoa, oh What is love? What is love? What is love? Oh baby, don't hurt me Don't hurt me No more Don't hurt me Don't hurt me I want no other, no other lover This is our life, our time If we are together, I need you forever Is it love? What is love? Oh baby, don't hurt me Don't hurt me No more What is love? Oh baby, don't hurt me Don't hurt me No more Yeah, yeah Whoa, whoa, oh Whoa, whoa, oh What is love?"
+      assert_equal expected_context, @builder.build_context(question_embedding)
+    end
+  end
+
+end
