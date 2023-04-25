@@ -4,7 +4,9 @@ love:
   question: "What is love?"
   answer: "Baby don't hurt me."
   audio_src_url: "https://example.com/answer.mp3"
+  project_name: "grimm"
 
 ultimate:
   question: "What is the answer to the ultimate question?"
   answer: "42"
+  project_name: "book"

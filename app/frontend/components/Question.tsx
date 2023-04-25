@@ -2,18 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Question, askQuestion, getQuestion } from "../utils/api";
 import { TypedText } from "./TypedText";
 import { AutoplayAudio } from "./AutoplayAudio";
+import type { Project } from "../utils/types";
 
-const EXAMPLE_QUESTIONS = window.project.sampleQuestions;
-
-function generateRandomQuestion() {
-  return EXAMPLE_QUESTIONS[
-    Math.floor(Math.random() * EXAMPLE_QUESTIONS.length)
-  ];
-}
 const MAX_QUESTION_REFRESH_RETRIES = 10;
 const QUESTION_REFRESH_INTERVAL = 1500;
 
-export function Question() {
+export function Question({ project }: { project: Project }) {
   const questionRef = React.useRef(null);
   const [answeredQuestion, setAnsweredQuestion] = useState<Question | null>(
     null
@@ -41,7 +35,7 @@ export function Question() {
     "idle" | "in-progress" | "success" | "finished" | "error"
   >("idle");
   function handleFeelingLuckyClick() {
-    questionRef.current.value = generateRandomQuestion();
+    questionRef.current.value = generateRandomQuestion(project.sampleQuestions);
     submitQuestion();
   }
   function submitQuestion() {
@@ -51,7 +45,7 @@ export function Question() {
       return;
     }
     setRequestState("in-progress");
-    askQuestion(question)
+    askQuestion(question, project.name)
       .then((result) => {
         setAnsweredQuestion(result);
         setRequestState("success");
@@ -72,9 +66,10 @@ export function Question() {
     <>
       <form>
         <textarea
+          key={project.name}
           ref={questionRef}
           disabled={requestState !== "idle"}
-          defaultValue={EXAMPLE_QUESTIONS[0]}
+          defaultValue={project.sampleQuestions[0] ?? ""}
           name="question"
           id="question"
           cols={30}
@@ -122,4 +117,8 @@ export function Question() {
       )}
     </>
   );
+}
+
+function generateRandomQuestion(sampleQuestions) {
+  return sampleQuestions[Math.floor(Math.random() * sampleQuestions.length)];
 }

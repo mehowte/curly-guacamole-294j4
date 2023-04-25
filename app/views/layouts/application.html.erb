@@ -10,7 +10,8 @@
     <%= vite_client_tag %>
     <%= vite_typescript_tag 'application.tsx' %>
     <script>
-      window.project = <%== project.to_json %>
+      window.defaultProjectName = "<%== default_project_name %>"
+      window.projectsByName = <%== projects_by_name.to_json %>
     </script>
   </head>
 

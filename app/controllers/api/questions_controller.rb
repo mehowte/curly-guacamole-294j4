@@ -4,16 +4,17 @@ class Api::QuestionsController < ApiController
       render json: { error: "Question cannot be empty" }, status: :unprocessable_entity
       return
     end
+    project = Project.new(params[:project_id])
     question_asked = Question.normalize_question(params[:question])
-    question = Question.find_by(question: question_asked)
+    question = Question.find_by(project_name: project.name, question: question_asked)
     if question.blank?
       question_embedding = QuestionEmbedding.find_by(question: question_asked)
       if question_embedding.blank?
         question_embedding = QuestionEmbedding.create!({question: question_asked, embedding: openai_client.get_embedding(question_asked)})
       end
-      context = build_context(question_embedding.embedding)
-      answer = get_answer(question_asked, context)
-      question = Question.create!({question: question_asked, answer: answer, context: context})
+      context = build_context(question_embedding.embedding, project)
+      answer = get_answer(question_asked, context, project)
+      question = Question.create!({question: question_asked, answer: answer, context: context, project_name: project.name})
     end
     if question.audio_src_url.blank?
       request_audio_file(question)
@@ -36,11 +37,11 @@ class Api::QuestionsController < ApiController
 
   private
 
-  def build_context(question_embedding)
+  def build_context(question_embedding, project)
     ContextBuilder.new(project).build_context(question_embedding)
   end
 
-  def get_answer(question_asked, context)
+  def get_answer(question_asked, context, project)
     openai_client.get_completion(
       PromptBuilder.new(project).build_prompt(question_asked, context)
     )
@@ -48,10 +49,6 @@ class Api::QuestionsController < ApiController
 
   def openai_client
     @openai_client ||= OpenaiClient.build
-  end
-
-  def project
-    @project ||= Project.build
   end
 
   def request_audio_file(question)

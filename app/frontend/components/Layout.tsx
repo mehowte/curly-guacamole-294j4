@@ -1,12 +1,35 @@
 import React from "react";
-export function Layout({ children }: { children: React.ReactNode }) {
+import type { Project } from "../utils/types";
+export function Layout({
+  currentProject,
+  projects,
+  children,
+  onProjectChange,
+}: {
+  currentProject: Project;
+  projects: Project[];
+  children: React.ReactNode;
+  onProjectChange: (project: Project) => void;
+}) {
   return (
     <>
       <div className="header">
+        <nav>
+          <ul>
+            {projects.map((project) => (
+              <li
+                className={currentProject.name === project.name ? "active" : ""}
+                onClick={() => onProjectChange(project)}
+              >
+                {project.title}
+              </li>
+            ))}
+          </ul>
+        </nav>
         <div className="logo">
           <img
-            src={`/${window.project.cover}`}
-            alt="Book cover"
+            src={`/${currentProject.cover}`}
+            alt={`${currentProject.title}'s cover`}
             loading="lazy"
           />
           <h1>Ask a book</h1>

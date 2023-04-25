@@ -1,6 +1,10 @@
 class Project
     def self.build
-        new(ENV["PROJECT_NAME"])
+        new(ENV["DEFAULT_PROJECT"])
+    end
+
+    def self.all
+        ENV["PROJECTS"].split(",").map { |project_name| new(project_name) } 
     end
 
     def initialize(name)

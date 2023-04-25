@@ -1,20 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { Layout } from "./Layout";
 import { Question } from "./Question";
+import type { Project } from "../utils/types";
 
 declare global {
-  var project: {
-    name: string;
-    title: string;
-    cover: string;
-    sampleQuestions: string[];
-  };
+  var projectsByName: Record<string, Project>;
+  var defaultProjectName: string;
 }
 
 export function App() {
+  const [projectName, setProjectName] = useState(window.defaultProjectName);
+  const project = window.projectsByName[projectName];
+  const projects = Object.values(window.projectsByName);
   return (
-    <Layout>
-      <Question />
+    <Layout
+      currentProject={project}
+      projects={projects}
+      onProjectChange={(project) => setProjectName(project.name)}
+    >
+      <Question key={project.name} project={project} />
     </Layout>
   );
 }

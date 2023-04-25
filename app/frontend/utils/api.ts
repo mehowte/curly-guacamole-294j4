@@ -2,8 +2,11 @@ export interface Question {
   answer: string;
   audio_src_url: string | null;
 }
-export async function askQuestion(question: string): Promise<Question> {
-  const response = await fetch("/api/questions", {
+export async function askQuestion(
+  question: string,
+  projectName: string
+): Promise<Question> {
+  const response = await fetch(`/api/projects/${projectName}/questions`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
