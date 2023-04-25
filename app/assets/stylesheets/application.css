@@ -88,7 +88,6 @@ footer {
   max-width: 600px;
 }
 
-select,
 textarea,
 button,
 .button {
@@ -98,6 +97,15 @@ button,
   border-radius: 10px;
   font-size: 18px;
   padding: 8px 12px;
+}
+select {
+  display: inline-block;
+  box-sizing: border-box;
+  border: 1px solid black;
+  border-radius: 10px;
+  font-size: 18px;
+  padding: 8px 18px;
+  margin-top: 1rem;
 }
 
 button,

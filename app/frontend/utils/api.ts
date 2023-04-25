@@ -4,14 +4,15 @@ export interface Question {
 }
 export async function askQuestion(
   question: string,
-  projectName: string
+  projectName: string,
+  openaiModel: string
 ): Promise<Question> {
   const response = await fetch(`/api/projects/${projectName}/questions`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ question }),
+    body: JSON.stringify({ question, openai_model: openaiModel }),
   });
   if (response.ok) {
     return response.json();

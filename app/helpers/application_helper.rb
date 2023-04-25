@@ -14,6 +14,10 @@ module ApplicationHelper
                     sampleQuestions: project.sample_questions 
                 }
             ] 
-    end.to_h
+        end.to_h
+    end
+
+    def openai_models
+        OpenaiClient::VALID_CHAT_AND_COMPLETION_MODELS
     end
 end

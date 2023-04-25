@@ -7,8 +7,15 @@ import type { Project } from "../utils/types";
 const MAX_QUESTION_REFRESH_RETRIES = 10;
 const QUESTION_REFRESH_INTERVAL = 1500;
 
-export function Question({ project }: { project: Project }) {
+export function Question({
+  project,
+  openaiModels = [],
+}: {
+  project: Project;
+  openaiModels: string[];
+}) {
   const questionRef = React.useRef(null);
+  const aiModelRef = React.useRef(null);
   const [answeredQuestion, setAnsweredQuestion] = useState<Question | null>(
     null
   );
@@ -40,12 +47,14 @@ export function Question({ project }: { project: Project }) {
   }
   function submitQuestion() {
     const question = String(questionRef.current.value).trim();
+    const aiModel = String(aiModelRef.current.value);
+    console.log({ aiModel });
     if (question.length === 0) {
       alert("Please ask a question!");
       return;
     }
     setRequestState("in-progress");
-    askQuestion(question, project.name)
+    askQuestion(question, project.name, aiModel)
       .then((result) => {
         setAnsweredQuestion(result);
         setRequestState("success");
@@ -88,6 +97,19 @@ export function Question({ project }: { project: Project }) {
           >
             Feeling lucky
           </button>
+          {openaiModels.length > 0 && (
+            <select
+              ref={aiModelRef}
+              name="openai_model"
+              defaultValue={openaiModels[0]}
+            >
+              {openaiModels.map((model) => (
+                <option key={model} value={model}>
+                  {model}
+                </option>
+              ))}
+            </select>
+          )}
         </div>
       )}
       {requestState === "in-progress" && <p>Let me think about it...</p>}
